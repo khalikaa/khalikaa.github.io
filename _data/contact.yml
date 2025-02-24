@@ -13,6 +13,10 @@
 - type: rss
   icon: "fas fa-rss"
   noblank: true
+
+- type: instagram
+  icon: 'fa-brands fa-instagram'
+  url: 'https://www.instagram.com/khalika_/'      
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon
