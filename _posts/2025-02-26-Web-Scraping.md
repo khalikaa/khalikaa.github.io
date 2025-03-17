@@ -2,6 +2,7 @@
 title: Simple Web Scraping Tutorial with Python & BeautifulSoup
 image:
     path: "/assets/img/web-scraping.png"
+categories: [Blogs]
 ---
 
 The internet is filled with valuable data, from product prices and news articles to stock market trends and social media insights. But manually copying and pasting data from web pages is time-consuming and inefficient. This is where web scraping comes in.

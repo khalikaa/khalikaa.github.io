@@ -2,6 +2,7 @@
 title: Blackjack
 image:
     path: "/assets/img/blackjack.png"
+categories: [Projects, Web App]
 ---
 
 **Blackjack** is an interactive web-based Blackjack game built using JavaScript and CSS. Players can draw cards, stand, and compete against the dealer, aiming to reach a total of 21 without exceeding it. The game dynamically updates the score and determines the winner based on traditional Blackjack rules, providing an engaging and responsive gameplay experience.
