@@ -4,7 +4,7 @@ title: Hi, I'm Khalika Tsabitah Malik! 👋🏻
 icon: fas fa-info-circle
 order: 4
 ---
-I am a dedicated Information Systems student with a passion for learning and problem-solving. Highly curious and creative, I seek opportunities to expand my skills and push my limits. Committed to continuous improvement, I strive to excel as a versatile professional and make a meaningful impact in my field.
+I am a dedicated Information Systems student with a passion for learning and problem-solving. Highly curious and creative, I seek opportunities to expand my skills and push my limits. I am committed to continuous improvement and strive to excel as a versatile professional who contributes meaningful impacts in my field.
 
 <hr>
 

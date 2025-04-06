@@ -46,36 +46,14 @@ pip install flask flask_sqlalchemy
 ```
 Kedua pustaka ini diperlukan untuk membangun REST API dengan Flask dan mengelola data di database.
 
-### 4) Konfigurasi Aplikasi Flask
-Buat file `app.py` dan konfigurasikan aplikasi Flask serta koneksi ke database
-```py
-from flask import Flask, jsonify, request
-from flask_sqlalchemy import SQLAlchemy
-
-# Inisialisasi aplikasi Flask
-app = Flask(__name__)
-
-# Konfigurasi database SQLite
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-# Inisialisasi SQLAlchemy
-db = SQLAlchemy(app)
-
-# Import model (akan dibuat pada langkah berikutnya)
-from models import Book
-
-# Route untuk halaman utama
-@app.route('/')
-def home():
-    return "Selamat datang di REST API Flask!"
-```
-
-### 5) Membuat Model Database
+### 4) Membuat Model Database
 Buat file `models.py` untuk mendefinisikan model database. Misalnya, kita akan
 membuat model untuk entitas `Book`.
 ```py
-from app import db
+from flask_sqlalchemy import SQLAlchemy
+
+# Inisialisasi SQLAlchemy
+db = SQLAlchemy()
 
 # Model untuk tabel "Book" di database dengan atribut id, title, author, dan published_year  
 class Book(db.Model):
@@ -93,6 +71,28 @@ class Book(db.Model):
         'author': self.author,
         'published_year': self.published_year
         }
+```
+
+### 5) Konfigurasi Aplikasi Flask
+Buat file `app.py` dan konfigurasikan aplikasi Flask serta koneksi ke database
+```py
+from flask import Flask, jsonify, request
+from models import db, Book
+
+# Inisialisasi aplikasi Flask
+app = Flask(__name__)
+
+# Konfigurasi database SQLite
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Menghubungkan objek database SQLAlchemy dengan aplikasi Flask
+db.init_app(app)
+
+# Route untuk halaman utama
+@app.route('/')
+def home():
+    return "Selamat datang di REST API Flask!"
 ```
 
 ### 6) Membuat Tabel Database
@@ -166,7 +166,7 @@ def delete_book(id):
 ### 8) Menjalankan Aplikasi
 Jalankan aplikasi Flask dengan perintah `flask --app app run`. Aplikasi akan berjalan di [http://127.0.0.1:5000/](http://127.0.0.1:5000/)
 
-## Contoh Penggunaan REST API
+## Contoh Pengujian REST API
 Selanjutnya kita akan melakukan pengujian REST API menggunakan Postman. Postman adalah aplikasi yang digunakan untuk menguji dan mengembangkan API. Dengan Postman, kamu dapat mengirimkan permintaan (request) ke API, mengatur parameter, dan melihat respons yang diterima, sehingga memudahkan pengujian API. Kamu bisa mengunduh Postman [di sini](https://www.postman.com/downloads/).
 
 ### 1. Menambah Data (Create)
@@ -185,7 +185,7 @@ Selanjutnya kita akan melakukan pengujian REST API menggunakan Postman. Postman 
 - Jika berhasil, kamu akan menerima respons berupa data buku yang sudah ditambahkan dalam format JSON, misalnya:
 ![Create](/assets/img/rest-api/create.png)
 
-### 2. Membaca Buku (Read)
+### 2. Membaca Daftar Buku (Read)
 - Pilih metode GET pada dropdown di sebelah kiri URL input bar.
 - Masukkan URL endpoint `http://localhost:5000/books` untuk mendapatkan semua data buku atau `http://localhost:5000/books/<id>` untuk mendapatkan satu buku berdasarkan ID.
 - Klik tombol `Send` untuk mengirim permintaan.
