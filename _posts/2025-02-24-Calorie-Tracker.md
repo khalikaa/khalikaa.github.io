@@ -1,7 +1,7 @@
 ---
 title: Calorie Tracker
 image:
-    path: "/assets/img/CalorieTracker.png"
+    path: "/assets/img/CalorieTrackerCover.png"
 categories: [Projects, Desktop App]
 ---
 

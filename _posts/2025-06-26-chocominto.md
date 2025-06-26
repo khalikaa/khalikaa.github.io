@@ -1,7 +1,7 @@
 ---
 title: chocominto
 image:
-    path: "/assets/img/chocominto.png"
+    path: "/assets/img/ChocomintoCover.png"
 categories: [Projects, Mobile App]
 ---
 
